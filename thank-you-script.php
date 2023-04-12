@@ -4,12 +4,14 @@
 <!-- Dynamic name in thank you page starts -->
 	<script>
 		// 	select input
-		let userName = document.querySelector('input#input_1_1_3');
+		let userName = document.querySelectorAll('input#input_1_1_3');
 		function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+userName.forEach(function(item){
 		//Add event listener to input
-			userName.addEventListener( 'change', function( event ) {
+			item.addEventListener( 'change', function( event ) {
 				// save name to variable
 				let fullName = this.value.split(' ');
 				let firstName = capitalizeFirstLetter(fullName[0]);
@@ -20,6 +22,7 @@
 			
 	
 		}, false );
+	});	
 	</script>
 
 <?php if(is_page(525)): // only runs in thank you page ?>
@@ -34,7 +37,7 @@
 		if(firstName != null && firstName != ''){
 			// Destination
 			let targetField = document.querySelector('#dynamicHeader');
-			targetField.innerText = `Thank You, ${firstName}!`;
+			targetField.innerHTML = `Thank You, ${firstName}!`;
 		}
 
 	</script>
